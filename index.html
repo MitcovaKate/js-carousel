@@ -60,23 +60,24 @@ setTimeout(
     },100)
 
 
- function nextSlide(){
+function nextSlide(){
     if(slide<3){  
         slide++
               }
     else{
-        return slide=0 
+        slide=1 
         }
    renderSlide()
  }
 
  function prevSlide(){
-   if(slide<1){
-   slide+=3
-     }
-     else if (slide<=3){
-        slide--
-     }
+
+if(slide<=1){
+ slide=3
+}
+ else{ 
+    slide--
+}
 renderSlide()
     }
     renderSlide()
