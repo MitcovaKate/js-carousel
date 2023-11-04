@@ -38,36 +38,40 @@ function renderSlide(){
         for(let r=0;r<5;r++){
          for(let c=0;c<5;c++){
             carousel.innerHTML += `<div id="sq-${r}-${c}" style="background-image: url(img${slide}.jpg);
-            background-position:${c * -100}px 
-                                ${r * -100}px;
-            transform:
-                               translateX(${-300 + Math.random() * 600}px)
-                               translateY(${-300 + Math.random() * 600}px)
-                               rotate(${Math.random() * 360}deg);
-                               opacity:0;">
+                                   background-position:${c * -100}px 
+                                                       ${r * -100}px;
+                                transform:
+                                   translateX(${-300 + Math.random() * 600}px)
+                                   translateY(${-300 + Math.random() * 600}px)
+                                   rotate(${Math.random() * 360}deg);
+                                    opacity:1;">
                 </div>`
-         }  
+        }  
         }
 }
-setTimeout(
-    function()
+function zeroCond()
 { for(let r=0;r<5;r++)
     {  for(let c=0;c<5;c++){
     window[`sq-${r}-${c}`].style.transform =
-    "translateX(0) translateY(0) rotate(0)"
+                         "translateX(0) translateY(0) rotate(0)"
     window[`sq-${r}-${c}`].style.opacity="1"}
 }
-    },100)
+    }
+let timerId=setTimeout(zeroCond,100)
 
-
-function nextSlide(){
-    if(slide<3){  
+    
+ function nextSlide(){
+    if(slide<3){ 
         slide++
-              }
+     
+             }
     else{
-        slide=1 
+        slide=1   
+       
         }
    renderSlide()
+   timerId=setTimeout(zeroCond,100)
+
  }
 
  function prevSlide(){
@@ -77,11 +81,16 @@ if(slide<=1){
 }
  else{ 
     slide--
+  
 }
+   
 renderSlide()
+timerId=setTimeout(zeroCond,100)
     }
+
     renderSlide()
 
     </script>
 </body>
 </html>
+      
